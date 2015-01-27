@@ -201,14 +201,11 @@ namespace SwagPlank
             {
                 foreach (var enemy in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsEnemy))
                 {
-                    if (R.CanCast(enemy))
+                    if (R.CanCast(enemy) && enemy.Health <= 150)
                     {
-                        var predition = R.GetPrediction(enemy, true);
-                        if (R.GetDamage(enemy) * 0.6 >= enemy.Health)
-                        {
+                            var predition = R.GetPrediction(enemy, true);
                             var preditionForR = R.GetPrediction(enemy);
                             R.Cast(preditionForR.CastPosition, true);
-                        }
                     }
                 }
             }
