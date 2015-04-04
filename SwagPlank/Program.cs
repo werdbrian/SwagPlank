@@ -94,7 +94,8 @@ namespace SwagPlank
             buffs.Add(BuffType.Charm);
 
             Drawing.OnDraw += OnDraw;
-            Game.OnGameUpdate += OnGameUpdate;
+         //   Game.OnGameUpdate += OnGameUpdate;
+            Game.OnUpdate += Game_OnGameUpdate;
         }
 
         private static void OnDraw(EventArgs args)
@@ -103,7 +104,7 @@ namespace SwagPlank
                 Render.Circle.DrawCircle(ObjectManager.Player.Position, 625, System.Drawing.Color.White);
         }
 
-        private static void OnGameUpdate(EventArgs args)
+        private static void Game_OnGameUpdate(EventArgs args)
         {
             bool comboActive = config.SubMenu("Combo").Item("comboActive").GetValue<KeyBind>().Active;
             bool harassActive = config.SubMenu("Harass").Item("harassActive").GetValue<KeyBind>().Active;
